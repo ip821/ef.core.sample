@@ -24,6 +24,13 @@ namespace sample1
                         context.Context.Set<Author>().Add(entity);
                         context.Context.SaveChanges();
                     }
+                    if (!context.Context.Set<Book>().Any())
+                    {
+                        var author = context.Context.Set<Author>().First();
+                        var book = new Book("test_book", author);
+                        context.Context.Set<Book>().Add(book);
+                        context.Context.SaveChanges();
+                    }
                     tx.Commit();
                 }
             }

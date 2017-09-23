@@ -10,9 +10,10 @@ using System;
 namespace sample1.Migrations
 {
     [DbContext(typeof(CustomDbContext))]
-    partial class CustomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170923195401_AddBooks")]
+    partial class AddBooks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

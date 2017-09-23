@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using sample1.Data;
 using sample1.Entities;
 
@@ -13,7 +14,6 @@ namespace sample1
         {
             _demoDataGenerator = demoDataGenerator;
             _dataContextFactory = dataContextFactory;
-
         }
 
         internal void Run()
@@ -25,6 +25,10 @@ namespace sample1
                 Console.WriteLine("List of authors:");
                 var authors = context.Context.Set<Author>().ToList();
                 authors.ForEach(a => Console.WriteLine($"Name: {a.Name}"));
+
+                Console.WriteLine("List of books:");
+                var books = context.Context.Set<Book>().Include(b => b.AuthorBooks).ToList();
+                books.ForEach(a => Console.WriteLine($"Name: {a.Name}"));
             }
         }
     }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace sample1.Entities
 {
     public class Author
